@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Text Editor App</title>
+	<style type="text/css">
+		.mdiv{
+			height: 100vh;
+			width: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			background-color: lightgray;
+			display: flex;
+			justify-content: center;
+			background-image: url("https://media.newyorker.com/photos/59a568af0e59a25c345bbf5d/master/w_2560%2Cc_limit/Englander-Gif.gif");
+			
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		.text{
+			margin-top: 50px;
+			margin-left: 100px;
+			color: floralwhite;
+			text-decoration: underline;
+			text-anchor: 50px;
+
+		}
+		.head{
+			margin-right: 90px;
+			
+		}
+		
+	</style>
+</head>
+<body>
+		<div class="mdiv">
+			<div class="text">
+				<h1 align="center" class="head">TEXT EDITOR</h1>
+					<div>
+						<form>
+							<textarea rows="15"cols="70"placeholder="ENTER YOUR TEXT" id="txt"onkeypress="updateInfo()" autofocus></textarea>
+							<br><br>
+							<button type="button" onclick="upperCase()">UPPERCASE</button>
+							<button type="button" onclick="lowerCase()">LOWERCASE</button>
+							<button type="button" onclick="bold()">BOLD </button>
+							<button type="button" onclick="search()">SEARCH</button>
+							<button type="button" onclick="alignRight()">ALIGN RIGHT </button>
+							<button type="button" onclick="alignLeft()">ALIGN LEFT</button>
+							<br><br>														<button type="button" onclick="alignCenter()">ALIGN CENTER</button>
+							<button type="button" onclick="textDecoration()">UNDERLINE</button>
+							<button type="button" onclick="textDec()">OVERLINE</button>
+							
+
+							<br><br>
+							<h3 style="background-color: white;color: red;" id="info">Your textcontains 0 words</h3>
+						</form>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				let txt=document.getElementById("txt");
+				let info=document.getElementById("info");
+				//info innerHTML
+				function upperCase()
+				{
+					txt.value=txt.value.toUpperCase();
+				}
+				function lowerCase() 
+				{
+					txt.value=txt.value.toLowerCase();
+				}
+				function bold()
+				{
+					txt.style.fontWeight="bolder";
+				}
+				function alignRight()
+				{
+					txt.style.textAlign="right";
+				}
+				function alignLeft()
+				{
+					txt.style.textAlign="left";
+				}
+				function alignCenter()
+				{
+					txt.style.textAlign="center";
+				}
+				function textDecoration()
+				{
+					txt.style.textDecoration="underline";
+				}
+				function textDec()
+				{
+					txt.style.textDecoration="overline";
+				}
+				function fontFamily()
+				{
+					txt.style.fontFamily="CURSIVE";
+				}
+				function updateInfo()
+				{
+					let text=txt.value;
+					info.innerHTML=`your text contains ${text.split(' ').length} words and  ${text.length}characters`
+				}
+				
+				function search()
+				{
+					let str=prompt("Enter something to search");
+					let text=txt.value;
+					if(text.includes(str)){
+						alert(`yes ${str} is  present`)
+					}
+					else{
+						alert('${str} is not present')
+					}
+				}
+				
+				
+			</script>
+</body>
+</html>
